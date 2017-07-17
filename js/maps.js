@@ -1,16 +1,21 @@
-      var map;
-			var videourl = "https://www.youtube.com/embed/HaoWlx4E-KI?autoplay=1";
+var map;
+			
       function initMap() {
-				var myLatlng = {lat: 41.0688, lng: -73.8752};
+				var events = [];
+				var myframe = document.getElementById("associatedvideo");
+				var info = document.getElementById("info");
+				var myLatLng = {lat: 41.0688, lng: -73.8752};
         map = new google.maps.Map(document.getElementById('map'), {
-          center: myLatlng,
+          center: myLatLng,
           zoom: 8
         });
 				
 				var marker = new google.maps.Marker({
-          position: myLatlng,
+          position: myLatLng,
           map: map,
-          title: 'Click to zoom'
+          title: 'Click to zoom',
+					url: "https://www.youtube.com/embed/HaoWlx4E-KI?autoplay=1",
+					date: new Date(year=2017, month=3, day=17)
         });
 				
 				map.addListener('center_changed', function() {
@@ -24,7 +29,7 @@
 				marker.addListener('click', function() {
           map.setZoom(10);
           map.setCenter(marker.getPosition());
-					video = document.getElementById("myvideo");
-					video.src = videourl;
+					myframe.src = marker.url;
+					info.innerHTML = "Date: " + marker.date.getFullYear() + "." + marker.date.getMonth() + "." + marker.date.getDate();
         });
       }
