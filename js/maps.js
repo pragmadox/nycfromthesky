@@ -2,6 +2,7 @@ var map;
 			
       function initMap() {
 				var events = [];
+				var videodiv = document.getElementById("display");
 				var myframe = document.getElementById("associatedvideo");
 				var info = document.getElementById("info");
 				var myLatLng = {lat: 41.0688, lng: -73.8752};
@@ -30,6 +31,7 @@ var map;
           map.setZoom(10);
           map.setCenter(marker.getPosition());
 					myframe.src = marker.url;
+					videodiv.style.display = "block";
 					info.innerHTML = "Date: " + marker.date.getFullYear() + "." + marker.date.getMonth() + "." + marker.date.getDate();
         });
       }
